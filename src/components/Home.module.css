@@ -1,0 +1,38 @@
+.input-area {
+    height: 20rem;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-area input {
+    padding: 20px 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 20px 0;
+    outline: none;
+    border: 1px solid;
+}
+
+.input-area input:active,
+.input-area input:focus {
+    border: 2px solid var(--olive-green);
+}
+
+.input-area button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--olive-green);
+    /* border: 1px solid white; */
+    border: none;
+    color: white;
+}
+
+.input-area button:hover {
+    color: var(--olive-green);
+    background-color: white;
+    
+    outline: 1px solid black;
+}
