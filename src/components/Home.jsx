@@ -25,6 +25,9 @@ const Home = () => {
     const getUserInfo = () => {
         event.preventDefault()
         console.log(profileName);
+        if(profileName.trim === ''){
+            return
+        }
         fetch(`https://api.github.com/users/${profileName}`)
             .then(response => response.json())
             .then(data => {
@@ -73,9 +76,10 @@ const Home = () => {
                 </div>
             }
 
-            {isLoading && <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
 
-            {/* <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div> */}
+            {isLoading &&
+                <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
+            }
 
             {hasFetchedData && ghProfileDetails.map(profile => (
                 <UserProfile
