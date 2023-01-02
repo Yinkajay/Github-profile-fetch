@@ -1,7 +1,7 @@
 
 nav{
-    /* background-color: green; */
-    background-color: var(--olive-green);
+    /* background-color: bisque; */
+    background-color: var(--light-green);
     height: 50px;
     display: flex;
     justify-content: center;
@@ -9,13 +9,17 @@ nav{
 }
 
 nav a{
-    color: white;
+    /* color: white; */
+    color: var(--light-pink);
+    font-weight: 700;
     padding: 10px;
     margin: 0px 5px;
     text-decoration: none;
+    font-family: 'Oswald', sans-serif;
 }
 
 nav a:hover{
-    color: white;
-    border-bottom: 2px solid white;
+    color: var(--dark-cl);
+    border-bottom: 2px solid var(--dark-cl);
 }
+

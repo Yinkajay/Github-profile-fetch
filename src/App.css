@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Oswald:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
 *{
   --dark-cl: #06070e;
   --olive-green: #29524A;
   --light-green: #94A187;
   --light-pink: #E9BCB7;
 }
+
+h1,h2,h3,h4,h5,h6{
+  color: var(--dark-cl);
+  font-family:'Playfair Display', sans-serif;
+}
+
+p{
+
+}
+

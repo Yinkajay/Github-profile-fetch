@@ -1,11 +1,18 @@
 import React from 'react'
+import styles from './UserProfile.module.css'
+
 
 const UserProfile = (props) => {
   return (
-    <>
-      <img src={props.imgsrc} />
-      <h2>Display Name - {props.profileName}</h2>
-    </>
+    <div className={styles['profile-card']}>
+      <h3>{props.profileName} Profile</h3>
+      <div className={styles['image-area']} >
+        <img src={props.imgsrc} />
+      </div>
+      <div>
+        <h2>Name - {props.profileName}</h2>
+      </div>
+    </div>
   )
 }
 

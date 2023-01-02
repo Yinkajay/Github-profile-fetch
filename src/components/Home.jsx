@@ -5,7 +5,7 @@ import UserProfile from './UserProfile'
 
 const Home = () => {
     const [profileName, setProfileName] = useState(null)
-    const [loading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [ghProfileDetails, setGhProfileDetails] = useState([])
     const [hasFetchedData, setHasFetchedData] = useState(false)
 
@@ -73,11 +73,18 @@ const Home = () => {
                 </div>
             }
 
+            {isLoading && <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
+
+            {/* <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div> */}
+
             {hasFetchedData && ghProfileDetails.map(profile => (
                 <UserProfile
-                    key = {Math.random}
-                    imgsrc = { profile.imgsrc }
-                    profileName = { profile.profileDisplayName }
+                    key={Math.random}
+                    imgsrc={profile.imgsrc}
+                    profileName={profile.profileDisplayName}
+                    devName={profile.devName}
+                    followers={profile.followers}
+                    following={profile.following}
                 />
             ))
             }
