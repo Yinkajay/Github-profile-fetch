@@ -5,8 +5,8 @@ import styles from './Navbar.module.css'
 const Navbar = () => {
     return (
         <nav>
-            <NavLink>Home</NavLink>
-            <NavLink>Repos</NavLink>
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/repos'>Repos</NavLink>
         </nav>
     )
 }
