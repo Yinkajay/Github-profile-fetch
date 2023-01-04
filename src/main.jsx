@@ -7,11 +7,14 @@ import { BrowserRouter } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { IconContext } from 'react-icons'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      {/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}> */}
+        <App />
+      {/* </IconContext.Provider> */}
     </React.StrictMode>
   </BrowserRouter>
 )

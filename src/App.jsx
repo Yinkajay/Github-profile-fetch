@@ -13,14 +13,18 @@ function App() {
     <StateContext.Provider value={
       {
         githubProfileName: '',
-        hasFetchedProfile: false
+        hasFetchedProfile: false,
+        numberOfRepositories: 0,
+        testData: 'YINX'
       }
     }>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/repos' element={<Repos />} />
-      </Routes>
+      <>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/repos' element={<Repos />} />
+        </Routes>
+      </>
     </StateContext.Provider>
   )
 }

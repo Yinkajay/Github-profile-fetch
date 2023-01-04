@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
+import StateContext from '../store/state-context'
 import styles from './Home.module.css'
 import UserProfile from './UserProfile'
 
@@ -8,6 +9,8 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [ghProfileDetails, setGhProfileDetails] = useState([])
     const [hasFetchedData, setHasFetchedData] = useState(false)
+    
+    const ctx = useContext(StateContext)
 
     let inputStyle
     if (profileName === '') {
@@ -40,15 +43,20 @@ const Home = () => {
                         imgsrc: repo.avatar_url,
                         devName: repo.name,
                         devCompany: repo.company,
-                        devFollowers: repo.followers,
-                        devFollowing: repo.following,
+                        followers: repo.followers,
+                        following: repo.following,
+                        bio: repo.bio
                     }
                 })
                 setGhProfileDetails(transformedDetails)
                 setIsLoading(false)
                 setHasFetchedData(true)
+                console.log(transformedDetails);
+                githubProfileName = transformedDetails.devName
+                console.log("name is " + ctx.githubProfileName)
             })
     }
+
 
 
 
@@ -57,7 +65,8 @@ const Home = () => {
         <>
             <div className={styles['text-area']}>
                 <h1>Hi Dev.</h1>
-                <h2>Check your Github stats</h2>
+                {!hasFetchedData && <h2>Check your Github stats.</h2>}
+                <h1>Your name is {ctx.githubProfileName}</h1>
             </div>
 
 
@@ -89,6 +98,7 @@ const Home = () => {
                     devName={profile.devName}
                     followers={profile.followers}
                     following={profile.following}
+                    bio={profile.bio}
                 />
             ))
             }
