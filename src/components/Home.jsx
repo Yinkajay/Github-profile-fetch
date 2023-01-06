@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useState } from 'react'
 import StateContext from '../store/state-context'
 import styles from './Home.module.css'
+import NotFound from './UI/NotFound'
 import UserProfile from './UserProfile'
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [ghProfileDetails, setGhProfileDetails] = useState([])
     const [hasFetchedData, setHasFetchedData] = useState(false)
-    
+
     const ctx = useContext(StateContext)
 
     let inputStyle
@@ -28,7 +29,7 @@ const Home = () => {
     const getUserInfo = () => {
         event.preventDefault()
         console.log(ctx.githubName);
-        if(ctx.githubName.trim() === ''){
+        if (ctx.githubName.trim() === '') {
             return
         }
         fetch(`https://api.github.com/users/${ctx.githubName}`)
@@ -63,11 +64,11 @@ const Home = () => {
         <>
             <div className={styles['text-area']}>
                 <h1>Hi Dev.</h1>
-                {!hasFetchedData && <h2>Check your Github stats.</h2>}
+                {!hasFetchedData && <h3>Check your Github stats.</h3>}
                 <h1>Your name is {ctx.githubName}</h1>
             </div>
 
-
+            {/* <NotFound /> */}
             {!hasFetchedData &&
                 <div className={styles['input-area']}>
                     <form onSubmit={getUserInfo}>

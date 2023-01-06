@@ -1,0 +1,18 @@
+.nf-card{
+    /* background-color: blue; */
+    max-width: 45vw;
+    min-height: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px black;
+    background-color: var(--dark-cl);
+}
+
+.nf-text-area{
+    padding: 20px;
+}
+
+.nf-text-area  h1,h2  {
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--light-pink);
+}
