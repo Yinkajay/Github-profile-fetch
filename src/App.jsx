@@ -10,14 +10,14 @@ import StateContext from './store/state-context'
 function App() {
 
   return (
-    <StateContext.Provider value={
-      {
-        githubProfileName: '',
-        hasFetchedProfile: false,
-        numberOfRepositories: 0,
-        testData: 'YINX'
-      }
-    }>
+    // <StateContext.Provider value={
+    //   {
+    //     githubProfileName: '',
+    //     hasFetchedProfile: false,
+    //     numberOfRepositories: 0,
+    //     testData: 'YINX'
+    //   }
+    // }>
       <>
         <Navbar />
         <Routes>
@@ -25,7 +25,7 @@ function App() {
           <Route path='/repos' element={<Repos />} />
         </Routes>
       </>
-    </StateContext.Provider>
+    // </StateContext.Provider>
   )
 }
 

@@ -1,6 +1,13 @@
 import React from 'react'
 
 const Repos = () => {
+
+
+    const getRepos = () => {
+        
+    }
+
+
     return (
         <div>
             <h1>You have ... Repositories</h1>

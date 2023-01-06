@@ -8,13 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { IconContext } from 'react-icons'
+import { StateContextProvider } from './store/state-context'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
-      {/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}> */}
+      <StateContextProvider>
         <App />
-      {/* </IconContext.Provider> */}
+      </StateContextProvider>
     </React.StrictMode>
   </BrowserRouter>
 )

@@ -27,11 +27,11 @@ const Home = () => {
 
     const getUserInfo = () => {
         event.preventDefault()
-        console.log(profileName);
-        if(profileName.trim === ''){
+        console.log(ctx.githubName);
+        if(ctx.githubName.trim() === ''){
             return
         }
-        fetch(`https://api.github.com/users/${profileName}`)
+        fetch(`https://api.github.com/users/${ctx.githubName}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -52,8 +52,6 @@ const Home = () => {
                 setIsLoading(false)
                 setHasFetchedData(true)
                 console.log(transformedDetails);
-                githubProfileName = transformedDetails.devName
-                console.log("name is " + ctx.githubProfileName)
             })
     }
 
@@ -66,7 +64,7 @@ const Home = () => {
             <div className={styles['text-area']}>
                 <h1>Hi Dev.</h1>
                 {!hasFetchedData && <h2>Check your Github stats.</h2>}
-                <h1>Your name is {ctx.githubProfileName}</h1>
+                <h1>Your name is {ctx.githubName}</h1>
             </div>
 
 
@@ -75,7 +73,7 @@ const Home = () => {
                     <form onSubmit={getUserInfo}>
                         <div className={styles['input-div']}>
                             {/* <input name='profilename' type="text" placeholder="What's your profile name" /> */}
-                            <input onChange={changeInputHandler} name='profilename' placeholder="What's your profile name" type="text" />
+                            <input onChange={ctx.profileInputHandler} name='profilename' placeholder="What's your profile name" type="text" />
                             <label className={styles['input-label']} htmlFor="profilename">
                                 Github Profile Name
                             </label>
