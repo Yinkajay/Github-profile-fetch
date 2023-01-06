@@ -9,7 +9,8 @@ const Home = () => {
     const [profileName, setProfileName] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [ghProfileDetails, setGhProfileDetails] = useState([])
-    const [hasFetchedData, setHasFetchedData] = useState(false)
+    // const [hasFetchedData, setHasFetchedData] = useState(false)
+    const [error, setError] = useState(null)
 
     const ctx = useContext(StateContext)
 
@@ -20,11 +21,9 @@ const Home = () => {
         inputStyle = 'input'
     }
 
-    const changeInputHandler = (event) => {
-        // console.log(event)
-        setProfileName(event.target.value)
-        // console.log(profileName)
-    }
+    // const changeInputHandler = (event) => {
+    //     setProfileName(event.target.value)
+    // }
 
     const getUserInfo = () => {
         event.preventDefault()
@@ -32,28 +31,33 @@ const Home = () => {
         if (ctx.githubName.trim() === '') {
             return
         }
-        fetch(`https://api.github.com/users/${ctx.githubName}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                const repoDetails = []
-                repoDetails.push(data)
-                let transformedDetails = repoDetails.map(repo => {
-                    return {
-                        profileDisplayName: repo.login,
-                        imgsrc: repo.avatar_url,
-                        devName: repo.name,
-                        devCompany: repo.company,
-                        followers: repo.followers,
-                        following: repo.following,
-                        bio: repo.bio
-                    }
+        try {
+            fetch(`https://api.github.com/users/${ctx.githubName}`)
+                .then(response => response.json()) 
+                .then(data => {
+                    console.log(data);
+                    const repoDetails = []
+                    repoDetails.push(data)
+                    let transformedDetails = repoDetails.map(repo => {
+                        return {
+                            profileDisplayName: repo.login,
+                            imgsrc: repo.avatar_url,
+                            devName: repo.name,
+                            devCompany: repo.company,
+                            followers: repo.followers,
+                            following: repo.following,
+                            bio: repo.bio
+                        }
+                    })
+                    setGhProfileDetails(transformedDetails)
+                    setIsLoading(false)
+                    ctx.fetchProfileHandler()
+                    console.log(transformedDetails);
+                    console.log(ctx.hasFetchedProfile);
                 })
-                setGhProfileDetails(transformedDetails)
-                setIsLoading(false)
-                setHasFetchedData(true)
-                console.log(transformedDetails);
-            })
+        } catch (error) {
+            setError(error.message)
+        }
     }
 
 
@@ -64,12 +68,12 @@ const Home = () => {
         <>
             <div className={styles['text-area']}>
                 <h1>Hi Dev.</h1>
-                {!hasFetchedData && <h3>Check your Github stats.</h3>}
+                {!ctx.hasFetchedData && <h3>Check your Github stats.</h3>}
                 <h1>Your name is {ctx.githubName}</h1>
             </div>
 
             {/* <NotFound /> */}
-            {!hasFetchedData &&
+            {!ctx.hasFetchedProfile &&
                 <div className={styles['input-area']}>
                     <form onSubmit={getUserInfo}>
                         <div className={styles['input-div']}>
@@ -89,7 +93,7 @@ const Home = () => {
                 <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
             }
 
-            {hasFetchedData && ghProfileDetails.map(profile => (
+            {ctx.hasFetchedProfile && ghProfileDetails.map(profile => (
                 <UserProfile
                     key={Math.random}
                     imgsrc={profile.imgsrc}

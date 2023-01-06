@@ -11,7 +11,9 @@ const Navbar = () => {
     return (
         <nav>
             <NavLink to='/'>Home <FaHome /></NavLink>
+            {ctx.hasFetchedProfile &&
             <NavLink to='/repos'>Repos <FaGitAlt /></NavLink>
+            }
         </nav>
     )
 }
