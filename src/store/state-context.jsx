@@ -4,8 +4,8 @@ const StateContext = React.createContext({
     githubName: '',
     hasFetchedProfile: false,
     numberOfRepositories: 0,
-    profileInputHandler: () => { },
-    fetchProfileHandler: () => { },
+    profileInputHandler: () => {},
+    fetchProfileHandler: () => {},
     testData: 'YINX'
 });
 

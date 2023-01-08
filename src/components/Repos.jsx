@@ -7,32 +7,34 @@ const Repos = () => {
 
     async function getRepos() {
         try {
-            const response = await fetch(`https://api.github.com/users/${ctx.githubName}/repos`)
-            const data = response.json()
-            if (!response.ok) {
-                throw new Error('Error occurred')
-            }
-            let repoArray
-            repoArray.push(data)
-            console.log(repoArray);
-
-            // const transformedRepos = da
+            fetch(`https://api.github.com/users/${ctx.githubName}/repos`)
+                .then(response => response.json())
+                .then(data => {
+                    let repoArray = []
+                    repoArray.push(data)
+                    console.log(repoArray);
+                    console.log('hi');
+                    console.log(`${ctx.githubName}`);
+                }
+                )
         } catch (error) {
+            console.log('hey');
             setError(error.message)
+            console.log(error.message);
+            console.log(`${ctx.githubName}`);
         }
     }
 
-    if (ctx.hasFetchedProfile) {
 
-    }
     useEffect(() => {
+        getRepos()
         if (ctx.hasFetchedProfile) {
-            getRepos()
         }
     }, [])
 
     return (
         <div>
+            <button className='btn btn-primary' onClick={getRepos}> Get Repos </button>
             <h1>You have ... Repositories</h1>
             <div>
                 <div className='card' style={{ width: '18rem' }}>
