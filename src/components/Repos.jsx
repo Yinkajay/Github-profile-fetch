@@ -1,18 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react'
 import StateContext from '../store/state-context'
+import RepoCard from './RepoCard'
 
 const Repos = () => {
     const [error, setError] = useState(null)
     const ctx = useContext(StateContext)
+    const [repos, setRepos] = useState([])
 
     async function getRepos() {
         try {
             fetch(`https://api.github.com/users/${ctx.githubName}/repos`)
                 .then(response => response.json())
                 .then(data => {
-                    let repoArray = []
-                    repoArray.push(data)
-                    console.log(repoArray);
+                    console.log(data);
+                    // let repoArray = []
+                    // repoArray.push(data)
+                    // console.log(repoArray);
+                    let transformedRepos = data.map(repo => {
+                        return {
+                            Name: repo.name,
+                            Desc: repo.description,
+                            Link: '',
+                        }
+                    })
+                    setRepos(transformedRepos)
+                    console.log(repos);
+                    ctx.fetchReposHandler(data)
                     console.log('hi');
                     console.log(`${ctx.githubName}`);
                 }
@@ -27,20 +40,21 @@ const Repos = () => {
 
 
     useEffect(() => {
-        getRepos()
         if (ctx.hasFetchedProfile) {
+            getRepos()
         }
     }, [])
 
     return (
         <div>
-            <button className='btn btn-primary' onClick={getRepos}> Get Repos </button>
-            <h1>You have ... Repositories</h1>
+            <h1>You have {ctx.repoNumber} Repositories</h1>
             <div>
-                <div className='card' style={{ width: '18rem' }}>
-                    <p>Hi</p>
-                    <a className='btn btn-danger'>Go</a>
-                </div>
+                { ctx.hasFetchedProfile && repos.map(repo => (
+                    <RepoCard
+                    repoName={repo.Name}
+                    />
+                ))}
+
             </div>
         </div>
     )

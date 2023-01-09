@@ -5,8 +5,8 @@ const NotFound = () => {
     return (
         <div className={styles['nf-card']}>
             <div className={styles['nf-text-area']}>
-                <h1>Sorry!</h1>
-                <h2>Profile not found</h2>
+                <h1 className={styles['nf-heading']}>Sorry!</h1>
+                <h2 className={styles['nf-heading']}>Profile not found</h2>
             </div>
         </div>
     )

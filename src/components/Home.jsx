@@ -29,7 +29,8 @@ const Home = () => {
         event.preventDefault()
         console.log(ctx.githubName);
         if (ctx.githubName.trim() === '') {
-            return
+            inputStyle = 'invalid-input'
+            return 
         }
         try {
             fetch(`https://api.github.com/users/${ctx.githubName}`)
@@ -38,15 +39,15 @@ const Home = () => {
                     console.log(data);
                     const repoDetails = []
                     repoDetails.push(data)
-                    let transformedDetails = repoDetails.map(repo => {
+                    let transformedDetails = repoDetails.map(profile => {
                         return {
-                            profileDisplayName: repo.login,
-                            imgsrc: repo.avatar_url,
-                            devName: repo.name,
-                            devCompany: repo.company,
-                            followers: repo.followers,
-                            following: repo.following,
-                            bio: repo.bio
+                            profileDisplayName: profile.login,
+                            imgsrc: profile.avatar_url,
+                            devName: profile.name,
+                            devCompany: profile.company,
+                            followers: profile.followers,
+                            following: profile.following,
+                            bio: profile.bio
                         }
                     })
                     setGhProfileDetails(transformedDetails)
