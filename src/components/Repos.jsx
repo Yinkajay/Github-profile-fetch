@@ -18,6 +18,7 @@ const Repos = () => {
                     // console.log(repoArray);
                     let transformedRepos = data.map(repo => {
                         return {
+                            Key: repo.id,
                             Name: repo.name,
                             Desc: repo.description,
                             Link: '',
@@ -51,6 +52,7 @@ const Repos = () => {
             <div>
                 { ctx.hasFetchedProfile && repos.map(repo => (
                     <RepoCard
+                    key={repo.Key}
                     repoName={repo.Name}
                     />
                 ))}

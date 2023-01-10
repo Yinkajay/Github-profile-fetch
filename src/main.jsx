@@ -12,10 +12,8 @@ import { StateContextProvider } from './store/state-context'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <React.StrictMode>
       <StateContextProvider>
         <App />
       </StateContextProvider>
-    </React.StrictMode>
   </BrowserRouter>
 )

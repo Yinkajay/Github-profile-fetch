@@ -11,6 +11,7 @@ const Home = () => {
     const [ghProfileDetails, setGhProfileDetails] = useState([])
     // const [hasFetchedData, setHasFetchedData] = useState(false)
     const [error, setError] = useState(null)
+    // const [transformedDetails, setTransformedDetails] = useState([])
 
     const ctx = useContext(StateContext)
 
@@ -27,6 +28,7 @@ const Home = () => {
 
     const getUserInfo = () => {
         event.preventDefault()
+        setIsLoading(true)
         console.log(ctx.githubName);
         if (ctx.githubName.trim() === '') {
             inputStyle = 'invalid-input'
@@ -74,6 +76,9 @@ const Home = () => {
             </div>
 
             {/* <NotFound /> */}
+            {isLoading &&
+                <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
+            }
             {!ctx.hasFetchedProfile &&
                 <div className={styles['input-area']}>
                     <form onSubmit={getUserInfo}>
@@ -90,9 +95,6 @@ const Home = () => {
             }
 
 
-            {isLoading &&
-                <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
-            }
 
             {ctx.hasFetchedProfile && ghProfileDetails.map(profile => (
                 <UserProfile

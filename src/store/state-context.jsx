@@ -19,7 +19,7 @@ export const StateContextProvider = (props) => {
     const [numberOfRepositories, setNumberOfRepositories] = useState(0)
 
     const profileInputHandler = (event) => {
-        setGithubProfileName(event.target.value)
+        setGithubProfileName(event.target.value.trim())
         console.log(githubProfileName);
     }
 
