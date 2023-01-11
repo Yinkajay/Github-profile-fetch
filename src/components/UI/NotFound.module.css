@@ -1,4 +1,4 @@
-.nf-card {
+.nf-card{
     /* background-color: blue; */
     max-width: 45vw;
     min-height: 200px;
@@ -8,15 +8,14 @@
     background-color: var(--dark-cl);
 }
 
-.nf-text-area {
+.nf-text-area{
     padding: 20px;
 }
 
-.nf-text-area h1,
-h2 {
+.nf-text-area > h1,h2  {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-.nf-heading {
+.nf-heading{
     color: var(--light-pink);
 }

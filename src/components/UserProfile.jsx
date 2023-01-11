@@ -10,7 +10,7 @@ const UserProfile = (props) => {
         <img src={props.imgsrc} />
       </div>
       <div>
-        <h2>Name - <p>{props.devName}</p></h2>
+        <h2>Name - <p><span className={styles.nameDev}>{props.devName}</span></p></h2>
         <h2>You have {props.followers} followers</h2>
         <h2>And you follow {props.following} people.</h2>
       </div>

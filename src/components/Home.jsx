@@ -32,11 +32,11 @@ const Home = () => {
         console.log(ctx.githubName);
         if (ctx.githubName.trim() === '') {
             inputStyle = 'invalid-input'
-            return 
+            return
         }
         try {
             fetch(`https://api.github.com/users/${ctx.githubName}`)
-                .then(response => response.json()) 
+                .then(response => response.json())
                 .then(data => {
                     console.log(data);
                     const repoDetails = []
@@ -71,11 +71,14 @@ const Home = () => {
         <>
             <div className={styles['text-area']}>
                 <h1>Hi Dev.</h1>
-                {!ctx.hasFetchedData && <h3>Check your Github stats.</h3>}
-                <h1>Your name is {ctx.githubName}</h1>
+                {!ctx.hasFetchedProfile && <h3>Check your Github stats.</h3>}
+                {ctx.hasFetchedProfile &&
+                    <h2>Your profile info is below</h2>
+                }
+                {/* <h1>Your name is {ctx.githubName}</h1> */}
             </div>
 
-            {/* <NotFound /> */}
+            <NotFound />
             {isLoading &&
                 <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
             }
