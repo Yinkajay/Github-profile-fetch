@@ -1,0 +1,24 @@
+.card {
+    background-color: var(--light-green);
+    color: white;
+    padding: 20px;
+    margin: 10px 5px;
+    width: 350px;
+    height: 200px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card svg{
+    color: white;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.repoName {
+    color: white;
+}

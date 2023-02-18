@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import StateContext from '../store/state-context'
 import styles from './Home.module.css'
@@ -65,6 +65,11 @@ const Home = () => {
 
 
 
+    useEffect(() => {
+        if (ctx.hasFetchedProfile) {
+            getUserInfo()
+        }
+    }, [])
 
 
     return (
@@ -78,7 +83,7 @@ const Home = () => {
                 {/* <h1>Your name is {ctx.githubName}</h1> */}
             </div>
 
-            <NotFound />
+            {/* <NotFound /> */}
             {isLoading &&
                 <div className={styles['lds-ellipsis']}><div></div><div></div><div></div><div></div></div>
             }

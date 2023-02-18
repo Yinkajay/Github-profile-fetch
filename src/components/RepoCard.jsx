@@ -1,11 +1,14 @@
 import React from 'react'
 import { FaGitAlt } from 'react-icons/fa'
+import styles from './RepoCard.module.css'
 
 const RepoCard = (props) => {
     return (
-        <div className='card' style={{ width: '18rem' }}>
-            <FaGitAlt />
-            <p>Name - {props.repoName}</p>
+        <div className={styles.card}>
+            <a href={`https://github.com/Yinkajay/${props.repoName}`}>
+                <FaGitAlt />
+                <h4>Name -<span className={styles.repoName}>{props.repoName}</span> </h4>
+            </a>
         </div>
     )
 }

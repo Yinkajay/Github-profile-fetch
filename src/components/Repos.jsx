@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import StateContext from '../store/state-context'
 import RepoCard from './RepoCard'
+import styles from './Repos.module.css'
 
 const Repos = () => {
     const [error, setError] = useState(null)
@@ -49,15 +50,14 @@ const Repos = () => {
     return (
         <div>
             <h1>You have {ctx.repoNumber} Repositories</h1>
-            <div>
+            {ctx.hasFetchedProfile && <div className={styles['repos-container']}>
                 { ctx.hasFetchedProfile && repos.map(repo => (
                     <RepoCard
                     key={repo.Key}
                     repoName={repo.Name}
                     />
                 ))}
-
-            </div>
+            </div>}
         </div>
     )
 }
