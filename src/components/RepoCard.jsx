@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaGitAlt } from 'react-icons/fa'
+import StateContext from '../store/state-context'
 import styles from './RepoCard.module.css'
 
 const RepoCard = (props) => {
+
+    const ctx  = useContext(StateContext)
     return (
         <div className={styles.card}>
-            <a href={`https://github.com/Yinkajay/${props.repoName}`}>
+            <a href={`https://github.com/${ctx.githubName}/${props.repoName}`}>
                 <FaGitAlt />
                 <h4>Name -<span className={styles.repoName}>{props.repoName}</span> </h4>
             </a>
